@@ -1,0 +1,62 @@
+.App{
+  margin: 0;
+}
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  padding: 10px;
+  margin: 0px;
+  /* border-radius: 2px; */
+  font-size: x-small;
+  background-color: #203e91 ;
+  font-size: large;
+}
+.header_title{
+  margin-left: 10px;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  flex-direction: row;
+  /* padding: 5px; */
+  background-color: #809ef0;
+  border-radius: 2px;
+  color: rgb(49, 48, 48);
+}
+.title{
+  padding-left: 10px;
+  padding-bottom: 6px;
+  padding-right: 10px;
+}
+.header_user{
+  margin-right: 10px;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  flex-direction: row;
+  padding: 1px;
+  background-color: #809ef0;
+  border-radius: 2px;
+  color: rgb(49, 48, 48);
+}
+.logout>button{
+  border: none;
+  background-color:#809ef0;
+  cursor: pointer;
+}
+.logout>button:hover{
+  background-color:#6287ec;
+  border-radius: 4px;
+}
+.account{
+  padding-top: 4px;
+  padding-left: 4px;
+  padding-right: 8px;
+
+}
+
+
+
+
+

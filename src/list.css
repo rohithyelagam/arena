@@ -1,0 +1,17 @@
+.list{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(97, 193, 248);
+    max-width: 225px;
+    margin: 2px;
+    padding:4px 2px 4px 2px;
+    
+}
+.list_header_title{
+    font-style: italic;
+}
+.list_header{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 3px 0px 3px;
+}

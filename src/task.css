@@ -1,0 +1,21 @@
+.task{
+    display: flex;
+    justify-content: space-between;
+    max-width: 200px;
+    background-color: whitesmoke;
+    padding: 2px;
+    margin: 2px;
+    font-weight:lighter;
+    font-size: large;
+    cursor: default;
+}
+.task:hover{
+    background-color: #f0e8e8;
+}
+.task_options{
+    opacity: 0.5;
+}
+.task_options:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
