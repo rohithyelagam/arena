@@ -23,11 +23,11 @@ connection.once('open', function() {
 //check and add user to db   =>  /new/user
 app.post('/new/user', (req, res) => {
     let userd=req.body;
-    userData.findOne({user_id : userd.user_id},(err,data)=>{
+    userData.findOne({'user_id' : userd.user_id},(err,data)=>{
         if (err) {
             res.status(500).send(err);
         } else {
-            if(!data){
+            if(data==null){
                 console.log("user needs to be added");
                 userData.create(userd, (err,data) => {
                     if(err){
@@ -41,7 +41,7 @@ app.post('/new/user', (req, res) => {
                 console.log("user already exists");
                 res.status(201).send(data);
             }
-            
+
         }
     })
     
@@ -126,6 +126,22 @@ app.post('/chng/title', (req, res) => {
 
 
 //delete task
+app.post('/delete/task', (req, res) => {
+
+    const user_id = req.user_id;
+    userData.deleteOne({
+        "user_id":req.user_id,
+     },(err, data) => {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+
+            res.status(201).send(data);
+        }
+    })
+})
+
+
 
 //get userslist
 app.get('/get/userlist', (req, res) => {
@@ -138,15 +154,22 @@ app.get('/get/userlist', (req, res) => {
     })
 })
 
-app.post('/get/user', (req, res) => {
+//get user lists
+app.post('/get/user',(req,res)=>{
+    let nn = req.body;
     userData.find({
-        user_id: req.user_id
-    },(err, data) => {
+        'user_id':nn.user_id,
+    },(err,data)=>{
         if (err) {
             res.status(500).send(err);
-        } else {
-            consoel.log(data);
-            res.status(201).send(data);
+        }else{
+            if(data[0]!=undefined){
+                // console.log("list");
+                res.status(201).send(data[0].lists);
+            }else{
+                // console.log(data);
+                res.status(201).send(data);
+            }
         }
     })
 })

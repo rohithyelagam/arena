@@ -1,25 +1,24 @@
 
 import { React, useEffect,useState } from "react";
-import './App.css';
 import Body from "./body";
 import Login from "./login";
 import {auth} from "./firebase";
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import axios from "./axios";
+import './App.css';
 
 
 function App() {
 
-   const [user,SetUser] = useState();
-
+   const [userr,SetUserr] = useState();
+    const [user,SetUser] = useState();
    const addusertodb = (user) => {
-
     axios.post("/new/user", {
       user_id: user.uid,
       user_name: user.displayName,
       user_photo: user.photo,
-    });
+    })
   };
 
 
@@ -27,16 +26,16 @@ function App() {
      if(auth!=null){
       auth.onAuthStateChanged((user) => {
         if (user) {
+          SetUserr(user.uid);
           SetUser(user);
           addusertodb(user);
+
         } else {
           console.log("No user");
-
         }
       });
      }
-   
-   })
+   },[])
   
    return (
     <div className="App">
@@ -53,7 +52,7 @@ function App() {
                    <div className="logout"><button onClick={() =>{auth.signOut();SetUser(null)} } className="Logout" title="logout"><PowerSettingsNewIcon /></button></div>
                    </div>
             </div>
-            <Body/>
+            <Body user={userr}/>
         
           </div>
         ):(
