@@ -2,6 +2,10 @@
   "name": "arena",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "npm": "6.14.8",
+    "node": "v14.15.1"
+  },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
