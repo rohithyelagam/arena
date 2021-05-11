@@ -12,7 +12,8 @@ import './App.css';
 function App() {
 
    const [userr,SetUserr] = useState();
-    const [user,SetUser] = useState();
+   const [user,SetUser] = useState();
+
    const addusertodb = (user) => {
     axios.post("/new/user", {
       user_id: user.uid,

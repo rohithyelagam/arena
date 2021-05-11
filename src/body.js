@@ -30,6 +30,8 @@ export default function Body(props){
                             }).then((res)=>{
                                     if(res.data!=undefined){
                                         setList(res.data);
+                                        // console.log('do task');
+                                        // console.log(res.data);
                                         refreshPage();
                                     }
                             })
@@ -38,6 +40,7 @@ export default function Body(props){
               }
            
     }
+    
 
     const handleAdd = ()=>{
         const list_n = prompt("Enter the List Name");
@@ -47,8 +50,19 @@ export default function Body(props){
                     axios.post('/new/list',{
                         'user_id':userr,
                         'list_name':list_n,
+                    }).then((res)=>{
+                        // console.log('ssss');
+                        // refreshPage();
+                        axios.post('/get/user',{
+                            'user_id':userr,
+                        }).then((res)=>{
+                                if(res.data!=undefined){
+                                    setList(res.data);
+                                    // refreshPage();
+                                }
+                        })
                     })
-                    refreshPage();
+                   
                   }
               }
            
