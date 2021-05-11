@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 const userData = require('./dbmodel');
 const path = require('path')
 const PORT = process.env.PORT || 5000;
+// require('dotenv').config();
+
 
 const app = express(express.static(path.join(__dirname, '../../build')));
 app.use(cors());
