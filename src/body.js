@@ -42,7 +42,7 @@ export default function Body(props){
     const handleAdd = ()=>{
         const list_n = prompt("Enter the List Name");
         
-              if (userr) {
+              if (userr){
                   if(list_n){
                     axios.post('/new/list',{
                         'user_id':userr,
@@ -50,8 +50,6 @@ export default function Body(props){
                     })
                     refreshPage();
                   }
-              }else{
-                  console.log('ddd');
               }
            
     }
@@ -104,7 +102,7 @@ export default function Body(props){
                     }
                         
                     <div className="add_list" id = "add_list">
-                        <button className="list_button" onClick={handleAdd()}>Add List</button>
+                        <button className="list_button" onClick={handleAdd}>Add List</button>
                     </div>
                 </div>
             </div>
