@@ -2,7 +2,7 @@ import firebase from "firebase";
 
 const firebaseConfig = {
     apiKey: "AIzaSyD1yYKNWvh8ECww6olJKoCmszmx_rs-bSQ",
-    authDomain: "arena-1234.herokuapp.com",
+    authDomain:"amigoport.firebaseapp.com",
     projectId: "amigoport",
     storageBucket: "amigoport.appspot.com",
     messagingSenderId: "1092895900642",

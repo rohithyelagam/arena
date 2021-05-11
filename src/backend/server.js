@@ -3,17 +3,20 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const userData = require('./dbmodel');
-const PORT = 4000;
+const path = require('path')
+const PORT = process.env.PORT || 4000;
 
-const app = express();
+const app = express(express.static(path.join(__dirname, '../../build')));
 app.use(cors());
 app.use(bodyParser.json());
+
 
 
 const mongo_url ='mongodb+srv://rohith_yelagam:Aa1%40bcde@cluster0.tnpyv.mongodb.net/arenaDB?retryWrites=true&w=majority';
 mongoose.connect(mongo_url, { 
     useNewUrlParser: true, 
-    useUnifiedTopology: true 
+    useUnifiedTopology: true,
+    useFindAndModify: false,
 });
 const connection = mongoose.connection;
 connection.once('open', function() {

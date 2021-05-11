@@ -19,7 +19,7 @@ export default function Body(props){
         const new_task = prompt("Enter the Task Name");
 
               if (userr) {
-                  if(new_task!=""){
+                  if(new_task){
                     axios.post('/new/task',{
                         'user_id':userr,
                         'list_name':list_nn,
@@ -43,7 +43,7 @@ export default function Body(props){
         const list_n = prompt("Enter the List Name");
         
               if (userr) {
-                  if(list_n!=""){
+                  if(list_n){
                     axios.post('/new/list',{
                         'user_id':userr,
                         'list_name':list_n,
