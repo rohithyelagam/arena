@@ -50,11 +50,10 @@ export default function Body(props){
                     })
                     refreshPage();
                   }
+              }else{
+                  console.log('ddd');
               }
            
-        
-        
-        
     }
    
     useEffect(()=>{
@@ -105,7 +104,7 @@ export default function Body(props){
                     }
                         
                     <div className="add_list" id = "add_list">
-                        <button className="list_button" onClick={handleAdd}>Add List</button>
+                        <button className="list_button" onClick={handleAdd()}>Add List</button>
                     </div>
                 </div>
             </div>
