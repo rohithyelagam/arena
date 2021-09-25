@@ -1,22 +1,21 @@
 .body{
     display: flex;
     flex-direction: column;
-    background-color: rgb(238, 232, 232);
-    min-height: 490px;
+    background-color: rgb(192, 208, 228);
     max-height: 1000px;
 }
 .arena{
     display: flex;
     flex-wrap: wrap;
-    /* flex-direction: row; */
 }
 .add_list{
-    background-color: rgb(222, 228, 228);
-    max-height: 50px;
+    /* background-color: rgb(222, 228, 228); */
+    height: 30px;
     border-radius: 2px;
     display: flex;
     min-width: 200px;
     justify-content: space-around;
+    outline: none;
 }
 .body_header{
     display: flex;

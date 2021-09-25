@@ -1,69 +1,60 @@
-
-import { React, useEffect,useState } from "react";
+import  React from "react";
 import Body from "./body";
-import Login from "./login";
-import {auth} from "./firebase";
+import Loggedin from "./loggedin";
+import firebase,{auth, provider} from "./firebase"
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import axios from "./axios";
 import './App.css';
 
 
-function App() {
+class App extends React.Component {
 
-   const [userr,SetUserr] = useState();
-   const [user,SetUser] = useState();
-
-   const addusertodb = (user) => {
-    axios.post("/new/user", {
-      user_id: user.uid,
-      user_name: user.displayName,
-      user_photo: user.photo,
-    })
-  };
-
-
-   useEffect(()=>{
-     if(auth!=null){
-      auth.onAuthStateChanged((user) => {
-        if (user) {
-          SetUserr(user.uid);
-          SetUser(user);
-          addusertodb(user);
-
-        } else {
-          console.log("No user");
-        }
-      });
-     }
-   },[])
+  constructor(props){
+    super(props);
+    this.state={
+      isLoggedIn:false,
+      user:auth.currentUser,
+      loading:true
+    };
+    auth.onAuthStateChanged((us)=>{
+      this.setState({
+        user:us
+      })
+    });
   
-   return (
-    <div className="App">
-      {
-        user != null ?(
-          <div>
-            <div className="header">
-               <div className="header_title">
-                   <div className="icon"><AssignmentIcon fontSize="large"/></div>
-                   <div className="title">ARENA</div>
-                   </div>
-               <div className="header_user">
-                   <div className="account"><img src={user.photoURL} width="40" height="40"></img></div>
-                   <div className="logout"><button onClick={() =>{auth.signOut();SetUser(null)} } className="Logout" title="logout"><PowerSettingsNewIcon /></button></div>
-                   </div>
+  }
+
+
+  handleLogin=()=>{
+    auth.signInWithPopup(provider).then((result)=>{
+      this.setState({
+        isLoggedIn:true,
+        user:result.user
+      })
+    });
+  }
+
+
+  render(){
+    return(
+      <div className="App">
+        {
+          (this.state.user)?(
+            <div>
+              <Loggedin/>
             </div>
-            <Body user={userr}/>
-        
-          </div>
-        ):(
-          <Login/>
-        )
-      }
-     
-      
-    </div>
-  );
+          ):(
+            <div className='login'>
+              
+              <button onClick={this.handleLogin} className='login-button'>Log In</button>
+            </div>
+          )
+        }
+      </div>
+    );
+  }
+
 }
 
 export default App;
